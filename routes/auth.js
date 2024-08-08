@@ -3,13 +3,16 @@ const User = require("../models/User");
 
 // register
 
-router.get("/register", async (req, res) => {
-  const user = await new User({
-    username: "jhon",
-    email: "ahmed @yakoo.com",
-    password: "123456",
-  });
-  await user.save();
+router.post("/register", (req, res) => {
+  console.log(req.body);
+
+  // const user = await new User({
+  //   userName: "jhon delhy",
+  //   email: "ahmedmohamed@yakoo.com",
+  //   password: "12333456",
+  // });
+  // await user.save();
+  // res.send("ok");
   res.send("ok");
 });
 

@@ -11,15 +11,20 @@ const app = express();
 dotenv.config();
 
 ////  moddlee ware
-app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+app.use(express.json());
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", auth);
 
-mongoose.connect(process.env.DATABASE).then((e) => {
-  app.listen(8800, () => {
-    console.log("backend server is fired");
+mongoose
+  .connect(process.env.DATABASE)
+  .then((e) => {
+    app.listen(8800, () => {
+      console.log("backend server is fired");
+    });
+  })
+  .catch((err) => {
+    console.log("🚀 ~ mongoose.connect ~ err:", err);
   });
-});
