@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const auth = require("./routes/auth");
+const postRoute = require("./routes/posts");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", auth);
+app.use("/api/posts", postRoute);
 
 mongoose
   .connect(process.env.DATABASE)
